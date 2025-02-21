@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({ origin: "https://bajaj-qualifier-api-22bcs13159.vercel.app" }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 
