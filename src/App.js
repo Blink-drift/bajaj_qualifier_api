@@ -24,7 +24,7 @@ function App() {
       const parsedData = JSON.parse(jsonInput);
       setError(null);
 
-      const res = await axios.post("http://localhost:3000/bfhl", parsedData);
+      const res = await axios.post("https://bajaj-qualifier-api.onrender.com/bfhl", parsedData);
       setResponse(res.data);
     } catch (err) {
       setError("Invalid JSON format");
