@@ -22,6 +22,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
+      setLoading(true);
       const parsedData = JSON.parse(jsonInput);
       setError(null);
 
