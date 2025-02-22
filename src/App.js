@@ -10,6 +10,7 @@ const options = [
 ];
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [jsonInput, setJsonInput] = useState("");
   const [error, setError] = useState(null);
   const [response, setResponse] = useState(null);
@@ -29,6 +30,8 @@ function App() {
     } catch (err) {
       setError("Invalid JSON format");
       setResponse(null);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,8 +62,16 @@ function App() {
         ></textarea>
         <button
             onClick={handleSubmit}
-            style={{ width: "100%", padding: "10px", marginTop: "10px", backgroundColor: "#0056b3", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}
-        >Submit</button>
+            style={{
+              width: "100%", padding: "10px", marginTop: "10px",
+              backgroundColor: "#0056b3", color: "white",
+              border: "none", borderRadius: "5px", cursor: "pointer",
+              opacity: loading ? 0.7 : 1,
+            }}
+            disabled={loading}
+        >
+          {loading ? "Loading..." : "Submit"}
+        </button>
         {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
         {response && (
             <>
